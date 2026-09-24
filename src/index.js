@@ -1,5 +1,8 @@
 function capitalize(string){
-    return string;
+    if(typeof string !== "string")
+        throw new Error("capitalize expect a string");
+
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function reverseString(string){
