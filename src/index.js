@@ -39,8 +39,23 @@ const calculator = {
     },
 };
 
-function caesarCipher(string){
+function caesarCipher(str, shiftFactor){
+    if(typeof str !== "string" || !Number.isInteger(shiftFactor)) throw new Error("caesarCipher a string and an int shift factor");
+    if(shiftFactor < 0) throw new Error("caesarCipher expects a non-negative shift factor");
+    
+    const alph = "abcdefghijklmnopqrstuvwxyz";
 
+    return str.split("").map(char => {
+        const isLower = char === char.toLowerCase();
+        const isUpper = char === char.toUpperCase();
+        
+        if(isLower && isUpper) return char;
+
+        const normalizedChar = char.toLowerCase();
+        const shiftedIndex = (alph.indexOf(normalizedChar) + shiftFactor) % alph.length;
+        
+        return isLower ? alph[shiftedIndex] : alph[shiftedIndex].toUpperCase();
+    }).join("");
 }
 
 function analyzeArray(numArr){
