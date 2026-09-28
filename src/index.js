@@ -44,7 +44,29 @@ function caesarCipher(string){
 }
 
 function analyzeArray(numArr){
+    if(!Array.isArray(numArr)) throw new Error("analyzeArray expects an array as the input");
+    if(numArr.length === 0) throw new Error("analyzeArray expect a non-empty number array");
 
+    let min = Number.MAX_VALUE;
+    let max = Number.MIN_VALUE;
+    let average = 0;
+
+    numArr.forEach(number => {
+        if(typeof number !== "number") throw new Error("analyzeArray expects an number array as the input");
+
+        min = min > number ? number : min;
+        max = max < number ? number : max;
+        average += number;
+    });
+
+    return{
+        average: (average / numArr.length),
+        min: min,
+        max: max,
+        length: numArr.length
+    }
 }
+
+console.log(analyzeArray([1,8,3,4,2,6]))
 
 export { capitalize, reverseString, calculator, caesarCipher, analyzeArray };
