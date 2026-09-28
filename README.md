@@ -1,16 +1,33 @@
-# template_webpack
+# JavaScript Testing Practice
 
-## Setup
-1. Clone or use this template
-2. `npm install`
+A small collection of utility functions, each covered by unit tests written using [Jest](https://jestjs.io/).
 
-## Development
-`npm run dev` — starts the dev server
+## Functions
 
-## Build
-`npm run build` — production build to `dist/`
+* `capitalize(str)`: returns the string with its first character capitalized
+* `reverseString(str)`: returns the string reversed
+* `calculator`: an object with `add`, `subtract`, `multiply` and `divide`, each taking exactly two numbers (`divide` throws when dividing by 0)
+* `caesarCipher(str, shiftFactor)`: shifts each English letter by the given amount, wrapping around from `z` to `a` and preserving case and punctuation
+* `analyzeArray(arr)`: returns an object with the `average`, `min`, `max` and `length` of an array of numbers
 
-## Deploying to GitHub Pages
-1. `npm run build`
-2. `git add dist -f && git commit -m "Deployment commit"`
-3. `npm run deploy`
+Functions validate their input and throw an error when given the wrong type or number of arguments.
+
+## Getting Started
+
+Clone the repo and install dependencies:
+```bash
+git clone https://github.com/OverlordGummyBear/testing.git
+cd testing
+npm install
+```
+
+## Running the Tests
+
+```bash
+npm test
+```
+
+## Notes
+
+* Tests live next to the source in `src/` and follow the `*.test.js` naming pattern.
+* Babel (`@babel/preset-env`) is configured so Jest can use ES module `import`/`export` syntax.
